@@ -1,0 +1,56 @@
+MAIN FILE
+
+package extra_Assignment;
+
+public class Main {
+public static void main(String []args)
+{
+	LinkList l=new LinkList();
+	LinkList l1=new LinkList();
+//	l.insert(10);
+//	l.insert(20);                
+//	l.insert(30);                
+//	l.insert(40);                
+//	l.insert(50);                
+//	//l.insert(10);            
+//	l1.insert(60);
+//	l1.insert(70);
+//	l1.insert(80);
+//	l1.setlast(l.head.getNext());
+//	
+//	l.display();
+//	System.out.println("------------");
+//	l.even();
+//	System.out.println("------------");
+//	l.odd();
+//	System.out.println("------------");
+//    l.middle();
+//	System.out.println("------------");
+//    //l.adjacent_swaping();
+//	System.out.println("------------");
+//	l.Nth(2);
+//	l.display();
+//	System.out.println("------------");
+//    l.finding_connection(l1.head);
+//    System.out.println("------------");
+//    l.display();
+//    System.out.println("Sorted Order:");
+//    l.sort();
+//    l.display();
+//	l.adjacent_swaping();
+//    l.display();
+	l.insert(1);
+	l.insert(1);
+	l.insert(2);
+	l.insert(1);
+	l.insert(3);
+	//l.delete_occ(2);
+	l.display();
+	System.out.println("-----------------");
+	l.right_rotate(2);
+	l.display();
+
+
+
+}
+}
