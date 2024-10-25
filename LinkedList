@@ -1,0 +1,241 @@
+package extra_Assignment;
+
+public class LinkList {
+	protected Node head;
+	public void insert(int d)
+	 {
+		Node new_node= new Node(d);
+		if(head==null)
+		 {
+			head=new_node;
+			return;
+		 }
+		Node iter=head;
+		while(iter.getNext()!=null)
+		 {
+			iter=iter.getNext();
+		 }
+		iter.setNext(new_node);
+	 }
+	public void display()
+	 {
+	    if(head==null)
+		return;
+	    Node iter=head;
+	    while(iter!=null)
+	     {
+	    	System.out.println("->"+iter.getVal());
+	    	iter=iter.getNext();
+	     }
+	 }
+	public void even()
+	 {
+	    if(head==null)
+		return;
+	    Node iter=head.getNext();
+	    while(iter!=null)
+	     {
+	    	System.out.println("->"+iter.getVal());
+	    	iter=iter.getNext().getNext();
+	     }
+	 }
+	public void odd()
+	 { 
+		
+	    if(head==null)
+	    {
+		 return;
+	    }Node iter=head; 
+	    while(iter!=null)
+	     {
+	    	System.out.println("->"+iter.getVal());
+	    	if(iter.getNext()==null)
+	    		break;
+	    	iter =iter.getNext().getNext();
+	     }
+	 }
+	public void middle()
+	{
+		if(head==null)
+			return ;
+		Node slow=head;
+		Node fast=head;
+		while(fast.getNext()!=null)
+		{
+			slow=slow.getNext();
+			fast=fast.getNext().getNext();
+		}
+		System.out.println("Middle element: "+slow.getVal());
+	}
+	public void adjacent_swaping()
+	{
+		if(head==null)
+			return ;
+		Node p=head;
+		Node p1=head.getNext();
+		while(p!=null&&p1!=null)
+		{
+			int temp=p.getVal();
+			p.setVal(p1.getVal());
+			p1.setVal(temp);
+			p=p1.getNext() ;
+			p1=p.getNext();
+		}
+		System.out.println("Hogya Swap.");
+	}
+	public void middle_del()
+	{
+		if(head==null)
+			return ;
+		Node slow=head;
+		Node fast=head;
+		while(fast.getNext()!=null||fast.getNext().getNext()!=null)
+		{
+			slow=slow.getNext();
+			fast=fast.getNext().getNext();
+		}
+		System.out.println("Middle element: "+slow.getVal());
+		Node iter=head;
+		while(iter.getNext()!=slow)
+			iter=iter.getNext();
+	   iter.setNext(slow.getNext());
+	   slow.setNext(null);
+	   slow=null;
+	}
+	public int Nth(int d)
+	{
+		if(head==null)
+			return 0;
+	    Node p=head;
+		Node p1=head;
+		while(d>1)
+		{
+	    	p1=p1.getNext();
+	    	d--;
+	
+		}
+		while(p1.getNext()!=null)
+		{
+			p=p.getNext();
+			p1=p1.getNext();
+		}
+		System.out.println("Nth Element: "+p.getVal());
+		return p.getVal();
+	}
+	public void  finding_connection(Node d)
+	{
+	  int h=0,h1=0;
+	  Node iter=head;
+	  Node iter1=d;
+	  while(iter.getNext()!=null) {
+		h++;
+		iter=iter.getNext();
+	  }
+	  while(d.getNext()!=null)
+	  {
+		  h1++;
+		  d=d.getNext();
+	  }
+	  h1=h1-h;
+	  
+	  while(h1>0)
+	  {
+		  iter1=iter1.getNext();
+		  h1--;
+	  }
+	  System.out.println("Linked Node" +iter1.getVal());
+	}
+	public void setlast(Node h)
+	{
+		Node iter=head;
+		while(iter.getNext()!=null)
+			iter=iter.getNext();
+		iter.setNext(h);
+	}
+	public void sort()
+	{
+		Node iter=head;
+		Node iter1;
+		while(iter!=null)
+		{
+			iter1=iter.getNext();
+			while(iter1!=null)
+			{
+				if(iter.getVal()<=iter1.getVal())
+				{
+				   int temp=iter.getVal();
+				   iter.setVal(iter1.getVal());
+				   iter1.setVal(temp);
+				}
+				iter1=iter1.getNext();
+			}iter=iter.getNext();
+		}
+	}
+	public void delete_occ(int d)
+	{
+      if(head==null||head.getNext()==null)
+    	  return;
+      while(head!=null&&head.getVal()==d)
+    	  head=head.getNext();
+      Node iter=head;
+      while(iter!=null  && iter.getNext()!=null)
+      {
+    	  if(iter.getNext().getVal()==d)
+    	  {
+    		  if(iter.getNext().getNext()==null)
+    			  iter.setNext(null);
+    		  else
+    		  iter.setNext(iter.getNext().getNext());  
+    	  }
+    		  else
+    		  iter=iter.getNext();
+      }
+	}
+	public void reverse()
+	{
+	   Node iter=head;
+	   int size=0;
+	   while(iter!=null)
+	   {size++;
+		   iter=iter.getNext();
+	   }
+	   int arr[]=new int[size];
+	   iter=head;size=0;
+	   while(iter!=null)
+	   {
+		   arr[size]=iter.getVal();
+		   iter=iter.getNext();
+		   size++;
+	   }iter=head;size-=1;
+	   while(iter!=null)
+	   {
+		   iter.setVal(arr[size]);
+		   size--;
+		   iter=iter.getNext();
+	   }
+	}
+	public void right_rotate(int d)
+	{
+	   if(head==null || head.getNext()==null)
+		   return ;
+	   Node iter=head,iter1=head;
+	 while(d>0 )
+	 {d--;
+		 iter=iter.getNext();
+	 }
+	 while(iter.getNext()!=null)
+	 {
+		 iter1=iter1.getNext();
+		 iter=iter.getNext();
+	 }
+	 iter=iter1.getNext();
+	 iter1.setNext(null);
+	 iter1=iter;
+	 while(iter1.getNext()!=null)
+		 iter1=iter1.getNext();
+	 iter1.setNext(head);
+	 head=iter;
+	 System.out.println("Hogya rotate.");
+	}
+	
+}
